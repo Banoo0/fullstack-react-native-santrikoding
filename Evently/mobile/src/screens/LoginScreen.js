@@ -15,7 +15,8 @@ export default function LoginScreen({ navigation }) {
       setBusy(true);
       await login(email.trim(), password);
     } catch (e) {
-      Alert.alert('Gagal login', e.response?.data?.message || 'Tidak bisa terhubung ke server');
+      console.log('ERROR:', e.message, e.code);
+      Alert.alert('Gagal daftar', e.response?.data?.message || `Tidak bisa terhubung ke server\n(${e.message})`);
     } finally {
       setBusy(false);
     }
